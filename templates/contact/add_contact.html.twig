@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form method="post" action="{{ path('app_contact_add') }}">
+        <label>
+            <input type="text" name="email" placeholder="Type your contact's email">
+        </label>
+
+        <button type="submit">Add</button>
+    </form>
+
+    {{ message }}
+
+    <button><a href="{{ path('app_index') }}">Prout</a></button>
+{%  endblock %}
