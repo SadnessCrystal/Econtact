@@ -18,7 +18,7 @@ class Contact
     private ?Utilisateur $idUtilisateur = null;
 
     #[ORM\ManyToOne(fetch: 'EAGER', inversedBy: 'contacts')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     private ?Utilisateur $contact = null;
 
     public function getId(): ?int

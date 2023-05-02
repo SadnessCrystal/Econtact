@@ -32,4 +32,7 @@
 
     <button><a href="{{ path('app_contact_add') }}">Add a contact</a></button>
 
+    {% if hasADeletionRequest is same as false %}
+        <button><a href="{{ path('app_demande_suppression_new') }}">Request a deletion</a></button>
+    {% endif %}
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DemandeSuppression index{% endblock %}
+
+{% block body %}
+    <h1>DemandeSuppression index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>UserId</th>
+                <th>Request_date</th>
+                <th>Reason</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande_suppression in demande_suppressions %}
+            <tr>
+                <td>{{ demande_suppression.id }}</td>
+                <td>{{ demande_suppression.userId }}</td>
+                <td>{{ demande_suppression.requestDate ? demande_suppression.requestDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ demande_suppression.reason }}</td>
+                <td>
+                    <a href="{{ path('app_demande_suppression_show', {'id': demande_suppression.id}) }}">show</a>
+                    <a href="{{ path('app_demande_suppression_edit', {'id': demande_suppression.id}) }}">edit</a>
+
+                    {% if demande_suppression.userDeleted is same as false %}
+                        <a href="{{ path('app_utilisateur_delete', {'id': demande_suppression.userId}) }}?suppreId={{ demande_suppression.id  }}">delete user</a>
+                    {% else %}
+                        user already deleted
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_demande_suppression_new') }}">Create new</a>
+{% endblock %}

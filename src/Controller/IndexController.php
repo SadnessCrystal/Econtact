@@ -12,8 +12,14 @@ class IndexController extends AbstractController
     public function index(): Response
     {
         // Si le user est déjà connecté
-        if ($this->getUser()){
-            return $this->redirectToRoute('app_contact');
+        if ($this->getUser()) {
+
+            if (in_array('admin',$this->getUser()->getRoles())) {
+                return $this->redirectToRoute('app_admin');
+            }
+            else {
+                return $this->redirectToRoute('app_contact');
+            }
         }
         return $this->redirectToRoute('app_login');
     }

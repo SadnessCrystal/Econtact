@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin interface{% endblock %}
+
+{% block body %}
+    <button><a href="{{ path('app_contact_index') }}">Contact List</a></button>
+    <button><a href="{{ path('app_utilisateur_index') }}">User List</a></button>
+    <button><a href="{{ path('app_demande_suppression_index') }}">Delete request history</a></button>
+{% endblock %}
